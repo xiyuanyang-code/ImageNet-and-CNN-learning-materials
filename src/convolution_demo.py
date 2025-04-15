@@ -56,8 +56,10 @@ if __name__ == "__main__":
     kernel_2 = [[0, -1, 0], [-1, 5, -1], [0, -1, 0]]
     kernel_3 = [[1 / 9, 1 / 9, 1 / 9], [1 / 9, 1 / 9, 1 / 9], [1 / 9, 1 / 9, 1 / 9]]
     kernel_4 = [[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]]
-    kernel_5 = np.random.randn(3,3)
-    # print(kernel_5)
+    kernel_5 = np.random.randn(3, 3)
+    kernel_5 = kernel_5 / kernel_5.sum()
+    kernel_6 = np.identity(3) / 3
+    kernel_7 = [[-2, -3, -2], [-3, 21, -3], [-2, -3, -2]]
 
     # 替换为您本地的图片路径
     image_path = "img/demo_cat.jpg"  # 请确保路径正确
@@ -66,4 +68,11 @@ if __name__ == "__main__":
     apply_convolution(image_path, kernel_3, "normalize")
     apply_convolution(image_path, kernel_4, "edge_detect2")
     apply_convolution(image_path, kernel_5, "just for fun")
+    apply_convolution(image_path, kernel_6, "kernel6")
+    apply_convolution(image_path, kernel_7, "kernel_7")
 
+    # the usage of surbo kernel
+    kernel_surbo_1 = [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]]
+    kernel_surbo_2 = [[1, 2, 1], [0, 0, 0], [-1, -2, -2]]
+    apply_convolution(image_path, kernel_surbo_1, "surbo_1")
+    apply_convolution(image_path, kernel_surbo_2, "surbo_2")
